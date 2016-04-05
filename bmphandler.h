@@ -24,6 +24,11 @@ typedef union LONG {
     unsigned int z;
 } LONG;
 
+typedef union LBP {
+    bool x[8];
+    unsigned char y;
+} LBP;
+
 typedef struct BITMAPFILEHEADER{
     DWORD  bfType;           /* Magic number for file */
     LONG   bfSize;           /* Size of file */
@@ -62,12 +67,15 @@ private:
     std::ifstream is;
     std::string fileName;
     std::vector<std::vector<unsigned char> > data;
+    std::vector<std::vector<unsigned char> > dataTransformed;
     BITMAPFILEHEADER h;
     BITMAPINFOHEADER ih;
 public:
     bmphandler();
     bmphandler(std::string);
     ~bmphandler();
+    void lbpMaker();
+    void updateDB();
 };
 
 #endif

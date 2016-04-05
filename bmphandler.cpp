@@ -1,4 +1,5 @@
 #include "bmphandler.h"
+#include <iostream>
 
 bmphandler::bmphandler(){}
 
@@ -86,3 +87,73 @@ bmphandler::bmphandler(std::string fileName) {
 }
 
 bmphandler::~bmphandler(){};
+
+void bmphandler::lbpMaker () {
+    dataTransformed.reserve(ih.biHeight.y/3);
+    LBP temp;
+    std::vector<unsigned char> tempo;
+    int w = 0;
+    int x = 0;
+    for (int i = 1; i < ih.biWidth.y; i+=3, w++) {
+        dataTransformed.push_back(tempo);
+        dataTransformed.at(w).reserve(ih.biHeight.y/3);
+        for (int j = 1; j < ih.biHeight.y; j+=3, x++) {
+            dataTransformed.at(w).push_back((unsigned char)0);
+
+            if (data.at(i-1).at(j-1) < data.at(i).at(j)) {
+                dataTransformed.at(w).at(x) <<= 1;
+            } else {
+                dataTransformed.at(w).at(x) += 1;
+                dataTransformed.at(w).at(x) <<= 1;
+            }
+
+            if (data.at(i-1).at(j)   < data.at(i).at(j)) {
+                dataTransformed.at(w).at(x) <<= 1;
+            } else {
+                dataTransformed.at(w).at(x) += 1;
+                dataTransformed.at(w).at(x) <<= 1;
+            }
+
+            if (data.at(i-1).at(j+1) < data.at(i).at(j)) {
+                dataTransformed.at(w).at(x) <<= 1;
+            } else {
+                dataTransformed.at(w).at(x) += 1;
+                dataTransformed.at(w).at(x) <<= 1;
+            }
+
+            if (data.at(i).at(j+1)   < data.at(i).at(j)) {
+                dataTransformed.at(w).at(x) <<= 1;
+            } else {
+                dataTransformed.at(w).at(x) += 1;
+                dataTransformed.at(w).at(x) <<= 1;
+            }
+
+            if (data.at(i+1).at(j+1) < data.at(i).at(j)) {
+                dataTransformed.at(w).at(x) <<= 1;
+            } else {
+                dataTransformed.at(w).at(x) += 1;
+                dataTransformed.at(w).at(x) <<= 1;
+            }
+
+            if (data.at(i+1).at(j)   < data.at(i).at(j)) {
+                dataTransformed.at(w).at(x) <<= 1;
+            } else {
+                dataTransformed.at(w).at(x) += 1;
+                dataTransformed.at(w).at(x) <<= 1;
+            }
+
+            if (data.at(i+1).at(j-1) < data.at(i).at(j)) {
+                dataTransformed.at(w).at(x) <<= 1;
+            } else {
+                dataTransformed.at(w).at(x) += 1;
+                dataTransformed.at(w).at(x) <<= 1;
+            }
+
+            if (data.at(i).at(j-1)   < data.at(i).at(j)) {
+            } else {
+                dataTransformed.at(w).at(x) += 1;
+            }
+        }
+        x = 0;
+    }
+}
