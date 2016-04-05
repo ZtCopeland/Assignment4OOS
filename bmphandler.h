@@ -9,25 +9,20 @@
 typedef std::istreambuf_iterator<char> iter;
 
 typedef union WORD {
-    unsigned char x;
+    unsigned char UCHAR;
 } WORD;
 
 typedef union DWORD {
-    unsigned char x[2];
-    short y;
-    unsigned short z;
+    unsigned char UCHAR[2];
+    short SSHORT;
+    unsigned short USHORT;
 } DWORD;
 
 typedef union LONG {
-    unsigned char x[4];
-    int y;
-    unsigned int z;
+    unsigned char UCHAR[4];
+    int SINT;
+    unsigned int UINT;
 } LONG;
-
-typedef union LBP {
-    bool x[8];
-    unsigned char y;
-} LBP;
 
 typedef struct BITMAPFILEHEADER{
     DWORD  bfType;           /* Magic number for file */
@@ -68,6 +63,7 @@ private:
     std::string fileName;
     std::vector<std::vector<unsigned char> > data;
     std::vector<std::vector<unsigned char> > dataTransformed;
+    std::vector<unsigned char> bufPadding;
     BITMAPFILEHEADER h;
     BITMAPINFOHEADER ih;
 public:

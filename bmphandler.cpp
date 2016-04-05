@@ -4,82 +4,83 @@
 bmphandler::bmphandler(){}
 
 unsigned char grayScale(RGBQUAD input) {
-    return input.rgbBlue.x*.07+input.rgbRed.x*.21+input.rgbGreen.x*.72;
+    return input.rgbBlue.UCHAR*.07+input.rgbRed.UCHAR*.21+input.rgbGreen.UCHAR*.72;
 }
 
 bmphandler::bmphandler(std::string fileName) {
     this -> fileName = fileName;
     is.open(fileName.c_str());
-    iter i(is);
-    h.bfType.x[0] = *i, i++;
-    h.bfType.x[1] = *i, i++;
-    h.bfSize.x[0] = *i, i++;
-    h.bfSize.x[1] = *i, i++;
-    h.bfSize.x[2] = *i, i++;
-    h.bfSize.x[3] = *i, i++;
-    h.bfReserved1.x[0] = *i, i++;
-    h.bfReserved1.x[1] = *i, i++;
-    h.bfReserved2.x[0] = *i, i++;
-    h.bfReserved2.x[1] = *i, i++;
-    h.bfOffBits.x[0] = *i, i++;
-    h.bfOffBits.x[1] = *i, i++;
-    h.bfOffBits.x[2] = *i, i++;
-    h.bfOffBits.x[3] = *i, i++;
-    ih.biSize.x[0] = *i, i++;
-    ih.biSize.x[1] = *i, i++;
-    ih.biSize.x[2] = *i, i++;
-    ih.biSize.x[3] = *i, i++;
-    ih.biWidth.x[0] = *i, i++;
-    ih.biWidth.x[1] = *i, i++;
-    ih.biWidth.x[2] = *i, i++;
-    ih.biWidth.x[3] = *i, i++;
-    ih.biHeight.x[0] = *i, i++;
-    ih.biHeight.x[1] = *i, i++;
-    ih.biHeight.x[2] = *i, i++;
-    ih.biHeight.x[3] = *i, i++;
-    ih.biPlanes.x[0] = *i, i++;
-    ih.biPlanes.x[1] = *i, i++;
-    ih.biBitCount.x[0] = *i, i++;
-    ih.biBitCount.x[1] = *i, i++;
-    ih.biCompression.x[0] = *i, i++;
-    ih.biCompression.x[1] = *i, i++;
-    ih.biCompression.x[2] = *i, i++;
-    ih.biCompression.x[3] = *i, i++;
-    ih.biSizeImage.x[0] = *i, i++;
-    ih.biSizeImage.x[1] = *i, i++;
-    ih.biSizeImage.x[2] = *i, i++;
-    ih.biSizeImage.x[3] = *i, i++;
-    ih.biXPelsPerMeter.x[0] = *i, i++;
-    ih.biXPelsPerMeter.x[1] = *i, i++;
-    ih.biXPelsPerMeter.x[2] = *i, i++;
-    ih.biXPelsPerMeter.x[3] = *i, i++;
-    ih.biYPelsPerMeter.x[0] = *i, i++;
-    ih.biYPelsPerMeter.x[1] = *i, i++;
-    ih.biYPelsPerMeter.x[2] = *i, i++;
-    ih.biYPelsPerMeter.x[3] = *i, i++;
-    ih.biClrUsed.x[0] = *i, i++;
-    ih.biClrUsed.x[1] = *i, i++;
-    ih.biClrUsed.x[2] = *i, i++;
-    ih.biClrUsed.x[3] = *i, i++;
-    ih.biClrImportant.x[0] = *i, i++;
-    ih.biClrImportant.x[1] = *i, i++;
-    ih.biClrImportant.x[2] = *i, i++;
-    ih.biClrImportant.x[3] = *i, i++;
+    iter bufIter(is);
+    h.bfType.UCHAR[0] = *bufIter, bufIter++;
+    h.bfType.UCHAR[1] = *bufIter, bufIter++;
+    h.bfSize.UCHAR[0] = *bufIter, bufIter++;
+    h.bfSize.UCHAR[1] = *bufIter, bufIter++;
+    h.bfSize.UCHAR[2] = *bufIter, bufIter++;
+    h.bfSize.UCHAR[3] = *bufIter, bufIter++;
+    h.bfReserved1.UCHAR[0] = *bufIter, bufIter++;
+    h.bfReserved1.UCHAR[1] = *bufIter, bufIter++;
+    h.bfReserved2.UCHAR[0] = *bufIter, bufIter++;
+    h.bfReserved2.UCHAR[1] = *bufIter, bufIter++;
+    h.bfOffBits.UCHAR[0] = *bufIter, bufIter++;
+    h.bfOffBits.UCHAR[1] = *bufIter, bufIter++;
+    h.bfOffBits.UCHAR[2] = *bufIter, bufIter++;
+    h.bfOffBits.UCHAR[3] = *bufIter, bufIter++;
+    ih.biSize.UCHAR[0] = *bufIter, bufIter++;
+    ih.biSize.UCHAR[1] = *bufIter, bufIter++;
+    ih.biSize.UCHAR[2] = *bufIter, bufIter++;
+    ih.biSize.UCHAR[3] = *bufIter, bufIter++;
+    ih.biWidth.UCHAR[0] = *bufIter, bufIter++;
+    ih.biWidth.UCHAR[1] = *bufIter, bufIter++;
+    ih.biWidth.UCHAR[2] = *bufIter, bufIter++;
+    ih.biWidth.UCHAR[3] = *bufIter, bufIter++;
+    ih.biHeight.UCHAR[0] = *bufIter, bufIter++;
+    ih.biHeight.UCHAR[1] = *bufIter, bufIter++;
+    ih.biHeight.UCHAR[2] = *bufIter, bufIter++;
+    ih.biHeight.UCHAR[3] = *bufIter, bufIter++;
+    ih.biPlanes.UCHAR[0] = *bufIter, bufIter++;
+    ih.biPlanes.UCHAR[1] = *bufIter, bufIter++;
+    ih.biBitCount.UCHAR[0] = *bufIter, bufIter++;
+    ih.biBitCount.UCHAR[1] = *bufIter, bufIter++;
+    ih.biCompression.UCHAR[0] = *bufIter, bufIter++;
+    ih.biCompression.UCHAR[1] = *bufIter, bufIter++;
+    ih.biCompression.UCHAR[2] = *bufIter, bufIter++;
+    ih.biCompression.UCHAR[3] = *bufIter, bufIter++;
+    ih.biSizeImage.UCHAR[0] = *bufIter, bufIter++;
+    ih.biSizeImage.UCHAR[1] = *bufIter, bufIter++;
+    ih.biSizeImage.UCHAR[2] = *bufIter, bufIter++;
+    ih.biSizeImage.UCHAR[3] = *bufIter, bufIter++;
+    ih.biXPelsPerMeter.UCHAR[0] = *bufIter, bufIter++;
+    ih.biXPelsPerMeter.UCHAR[1] = *bufIter, bufIter++;
+    ih.biXPelsPerMeter.UCHAR[2] = *bufIter, bufIter++;
+    ih.biXPelsPerMeter.UCHAR[3] = *bufIter, bufIter++;
+    ih.biYPelsPerMeter.UCHAR[0] = *bufIter, bufIter++;
+    ih.biYPelsPerMeter.UCHAR[1] = *bufIter, bufIter++;
+    ih.biYPelsPerMeter.UCHAR[2] = *bufIter, bufIter++;
+    ih.biYPelsPerMeter.UCHAR[3] = *bufIter, bufIter++;
+    ih.biClrUsed.UCHAR[0] = *bufIter, bufIter++;
+    ih.biClrUsed.UCHAR[1] = *bufIter, bufIter++;
+    ih.biClrUsed.UCHAR[2] = *bufIter, bufIter++;
+    ih.biClrUsed.UCHAR[3] = *bufIter, bufIter++;
+    ih.biClrImportant.UCHAR[0] = *bufIter, bufIter++;
+    ih.biClrImportant.UCHAR[1] = *bufIter, bufIter++;
+    ih.biClrImportant.UCHAR[2] = *bufIter, bufIter++;
+    ih.biClrImportant.UCHAR[3] = *bufIter, bufIter++;
 
-    int buff = h.bfOffBits.y - 54;
+    int buff = h.bfOffBits.SINT - 54;
     for (int j = 0; j < buff; j++)
-        i++;
-    data.reserve(ih.biHeight.y);
+        bufPadding.push_back(*bufIter);
+        bufIter++;
+    data.reserve(ih.biHeight.SINT);
     RGBQUAD temp;
-    std::vector<unsigned char> tempo;
-    for (int j = 0; j < ih.biWidth.y; j++) {
-        data.push_back(tempo);
-        data.at(j).reserve(ih.biWidth.y);
-        for (int k = 0; k < ih.biHeight.y; k++) {
-            temp.rgbBlue.x = *i, i++;
-            temp.rgbGreen.x = *i, i++;
-            temp.rgbRed.x = *i, i++;
-            temp.rgbReserved.x = *i, i++;
+    std::vector<unsigned char> tempVec;
+    for (int j = 0; j < ih.biWidth.SINT; j++) {
+        data.push_back(tempVec);
+        data.at(j).reserve(ih.biWidth.SINT);
+        for (int k = 0; k < ih.biHeight.SINT; k++) {
+            temp.rgbBlue.UCHAR = *bufIter, bufIter++;
+            temp.rgbGreen.UCHAR = *bufIter, bufIter++;
+            temp.rgbRed.UCHAR = *bufIter, bufIter++;
+            temp.rgbReserved.UCHAR = *bufIter, bufIter++;
             data.at(j).push_back(grayScale(temp));
 
         }
@@ -89,71 +90,70 @@ bmphandler::bmphandler(std::string fileName) {
 bmphandler::~bmphandler(){};
 
 void bmphandler::lbpMaker () {
-    dataTransformed.reserve(ih.biHeight.y/3);
-    LBP temp;
-    std::vector<unsigned char> tempo;
-    int w = 0;
-    int x = 0;
-    for (int i = 1; i < ih.biWidth.y; i+=3, w++) {
-        dataTransformed.push_back(tempo);
-        dataTransformed.at(w).reserve(ih.biHeight.y/3);
-        for (int j = 1; j < ih.biHeight.y; j+=3, x++) {
-            dataTransformed.at(w).push_back((unsigned char)0);
+    dataTransformed.reserve(ih.biHeight.SINT/3);
+    std::vector<unsigned char> tempVec;
+    int widthIter = 0;
+    int heightIter = 0;
+    for (int i = 1; i < ih.biWidth.SINT; i+=3, widthIter++) {
+        dataTransformed.push_back(tempVec);
+        dataTransformed.at(widthIter).reserve(ih.biHeight.SINT/3);
+        for (int j = 1; j < ih.biHeight.SINT; j+=3, heightIter++) {
+            dataTransformed.at(widthIter).push_back((unsigned char)0);
 
             if (data.at(i-1).at(j-1) < data.at(i).at(j)) {
-                dataTransformed.at(w).at(x) <<= 1;
+                dataTransformed.at(widthIter).at(heightIter) <<= 1;
             } else {
-                dataTransformed.at(w).at(x) += 1;
-                dataTransformed.at(w).at(x) <<= 1;
+                dataTransformed.at(widthIter).at(heightIter) += 1;
+                dataTransformed.at(widthIter).at(heightIter) <<= 1;
             }
 
             if (data.at(i-1).at(j)   < data.at(i).at(j)) {
-                dataTransformed.at(w).at(x) <<= 1;
+                dataTransformed.at(widthIter).at(heightIter) <<= 1;
             } else {
-                dataTransformed.at(w).at(x) += 1;
-                dataTransformed.at(w).at(x) <<= 1;
+                dataTransformed.at(widthIter).at(heightIter) += 1;
+                dataTransformed.at(widthIter).at(heightIter) <<= 1;
             }
 
             if (data.at(i-1).at(j+1) < data.at(i).at(j)) {
-                dataTransformed.at(w).at(x) <<= 1;
+                dataTransformed.at(widthIter).at(heightIter) <<= 1;
             } else {
-                dataTransformed.at(w).at(x) += 1;
-                dataTransformed.at(w).at(x) <<= 1;
+                dataTransformed.at(widthIter).at(heightIter) += 1;
+                dataTransformed.at(widthIter).at(heightIter) <<= 1;
             }
 
             if (data.at(i).at(j+1)   < data.at(i).at(j)) {
-                dataTransformed.at(w).at(x) <<= 1;
+                dataTransformed.at(widthIter).at(heightIter) <<= 1;
             } else {
-                dataTransformed.at(w).at(x) += 1;
-                dataTransformed.at(w).at(x) <<= 1;
+                dataTransformed.at(widthIter).at(heightIter) += 1;
+                dataTransformed.at(widthIter).at(heightIter) <<= 1;
             }
 
             if (data.at(i+1).at(j+1) < data.at(i).at(j)) {
-                dataTransformed.at(w).at(x) <<= 1;
+                dataTransformed.at(widthIter).at(heightIter) <<= 1;
             } else {
-                dataTransformed.at(w).at(x) += 1;
-                dataTransformed.at(w).at(x) <<= 1;
+                dataTransformed.at(widthIter).at(heightIter) += 1;
+                dataTransformed.at(widthIter).at(heightIter) <<= 1;
             }
 
             if (data.at(i+1).at(j)   < data.at(i).at(j)) {
-                dataTransformed.at(w).at(x) <<= 1;
+                dataTransformed.at(widthIter).at(heightIter) <<= 1;
             } else {
-                dataTransformed.at(w).at(x) += 1;
-                dataTransformed.at(w).at(x) <<= 1;
+                dataTransformed.at(widthIter).at(heightIter) += 1;
+                dataTransformed.at(widthIter).at(heightIter) <<= 1;
             }
 
             if (data.at(i+1).at(j-1) < data.at(i).at(j)) {
-                dataTransformed.at(w).at(x) <<= 1;
+                dataTransformed.at(widthIter).at(heightIter) <<= 1;
             } else {
-                dataTransformed.at(w).at(x) += 1;
-                dataTransformed.at(w).at(x) <<= 1;
+                dataTransformed.at(widthIter).at(heightIter) += 1;
+                dataTransformed.at(widthIter).at(heightIter) <<= 1;
             }
 
             if (data.at(i).at(j-1)   < data.at(i).at(j)) {
             } else {
-                dataTransformed.at(w).at(x) += 1;
+                dataTransformed.at(widthIter).at(heightIter) += 1;
             }
         }
-        x = 0;
+        heightIter = 0;
     }
 }
